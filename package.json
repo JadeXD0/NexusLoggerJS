@@ -1,0 +1,20 @@
+{
+  "name": "nexusloggerjs",
+  "version": "1.4.6",
+  "description": "",
+  "main": "NexusLogger.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JadeXD",
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/JadeXD0/NexusLoggerJS",
+    "type": "git"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "fs": "^0.0.1-security",
+    "moment": "^2.29.1"
+  }
+}
