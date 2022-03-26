@@ -48,8 +48,13 @@ async function VersionChecker(version) {
     } else {
         console.log(`Running latest version of NexusLoggerJS! Version: ${chalk.magentaBright(`v${latest}`)} | Current Version: ${chalk.magentaBright(`${version}`)}`);
     };
+    if(!version) {
+        throw TypeError("Missing version variable. Are you sure you defined one?")
+    }
 
 };
+
+if(!VersionChecker) throw new TypeError("Empty Version. Please define one!")
 
 module.exports = {
     NexusLogger,
