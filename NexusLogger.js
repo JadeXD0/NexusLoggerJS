@@ -46,6 +46,5 @@ class NexusLogger {
 }
 
 module.exports = {
-    NexusLogger,
-    VersionChecker
+    NexusLogger
 }
