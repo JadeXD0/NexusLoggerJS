@@ -4,7 +4,7 @@ const chalk = require("chalk");
 const moment = require("moment");
 const fs = require("fs");
 
-const outdatedversions = ["v1", "v1.1", "v1.2", "v1.2.5"];
+const outdatedversions = ["v1", "v1.1", "v1.2", "v1.2.5", "1.3", "1.4"];
 const latest = require("./package.json").version;
 
 class NexusLogger {
