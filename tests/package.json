@@ -1,0 +1,14 @@
+{
+  "name": "nexusloggertests",
+  "version": "1.0.0",
+  "description": "Tests for nexusloggerjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JadeXD",
+  "license": "ISC",
+  "dependencies": {
+    "nexusloggerjs": "^1.5.0"
+  }
+}

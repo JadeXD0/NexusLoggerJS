@@ -5,12 +5,13 @@ const moment = require("moment");
 const fs = require("fs");
 
 const outdatedversions = ["v1", "v1.1", "v1.2", "v1.2.5", "1.3", "1.4"];
-const latest = require("./package.json").version;
+const latest  = require("./package.json").version;
 
 class NexusLogger {
     constructor(name) {
 
         this.name = name;
+        this.version = latest;
         
         
         const d = new Date();
@@ -22,39 +23,27 @@ class NexusLogger {
 
     };
 
+    checkVersion(curVer) {
+        if(curVer !== this.version) return console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.red("Version Error")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.blueBright("We are sorry, seems like the version you are using does not match to the npm's version")}`);
+    }
+
     consoleLog(text) {
-        console.log(`${chalk.grey("Log")}  ${chalk.magenta(this.date)} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`);
+        console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`);
     }
 
     infoLog(text) {
-        console.log(`${chalk.green("Info")}  ${chalk.magenta(this.date)} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.greenBright(text)}`);
+        console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.green("Info")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.greenBright(text)}`);
     };
 
     warnLog(text) {
-        console.log(`${chalk.yellow("Warn")}  ${chalk.magenta(this.date)} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.yellowBright(text)}`);
+        console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.yellow("Warn")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.yellowBright(text)}`);
     };
 
     errorLog(text) {
-        console.log(`${chalk.red("Error")}  ${chalk.magenta(this.date)} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.redBright(text)}`);
+        console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.red("Error")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.redBright(text)}`);
     };
 
 }
-
-async function VersionChecker(version) {
-
-    if(!version.startsWith("v")) version = `v${version}`;
-    if(outdatedversions.includes(`${version}`)) {
-        throw Error(`This version of NexusLoggerJS is outdated! Please update to v${latest}!`);
-    } else {
-        console.log(`Running latest version of NexusLoggerJS! Version: ${chalk.magentaBright(`v${latest}`)} | Current Version: ${chalk.magentaBright(`${version}`)}`);
-    };
-    if(!version) {
-        throw TypeError("Missing version variable. Are you sure you defined one?")
-    }
-
-};
-
-if(!VersionChecker) throw new TypeError("Empty Version. Please define one!")
 
 module.exports = {
     NexusLogger,
