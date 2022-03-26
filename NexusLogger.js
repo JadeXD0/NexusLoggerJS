@@ -24,7 +24,9 @@ class NexusLogger {
     };
 
     checkVersion(curVer) {
-        if(curVer !== this.version) return console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.red("Version Error")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.blueBright("We are sorry, seems like the version you are using does not match to the npm's version")}`);
+        if(curVer !== this.version) {
+            throw new Error(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.red("Version Error")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.blueBright("We are sorry, seems like the version you are using does not match to the npm's version")}`);
+        }
     }
 
     consoleLog(text) {
