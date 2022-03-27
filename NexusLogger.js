@@ -10,8 +10,6 @@ class NexusLogger {
     constructor(name) {
 
         this.name = name;
-        this.version = latest;
-        
         
         const d = new Date();
 
@@ -21,15 +19,6 @@ class NexusLogger {
         this.date = date;
 
     };
-
-    checkVersion(curVer) {
-        if(curVer !== this.version) {
-            throw new Error(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Seems like your version may be outdated, we reccomend you update to our latest version as your current version may not be supported!. Update to the latest version: ${chalk.magenta(this.version)}`)}`);
-        };
-        if(!curVer) {
-            throw TypeError(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Sorry did you define a version your using? We have to check if your using an update version`)}`)
-        }
-    }
 
     consoleLog(text) {
         console.log(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`);
@@ -49,6 +38,16 @@ class NexusLogger {
 
 }
 
+function checkVersion(curVer) {
+    if(curVer !== `${latest}`) {
+        throw new Error(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Seems like your version may be outdated, we reccomend you update to our latest version as your current version may not be supported!. Update to the latest version: ${chalk.magenta(latest)}`)}`);
+    };
+    if(!curVer) {
+        throw TypeError(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Sorry did you define a version your using? We have to check if your using an update version`)}`)
+    }
+}
+
 module.exports = {
-    NexusLogger
+    NexusLogger,
+    checkVersion
 }
