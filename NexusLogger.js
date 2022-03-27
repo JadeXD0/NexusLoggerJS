@@ -4,7 +4,6 @@ const chalk = require("chalk");
 const moment = require("moment");
 const fs = require("fs");
 
-const outdatedversions = ["v1", "v1.1", "v1.2", "v1.2.5", "1.3", "1.4"];
 const latest  = require("./package.json").version;
 
 class NexusLogger {
@@ -25,7 +24,10 @@ class NexusLogger {
 
     checkVersion(curVer) {
         if(curVer !== this.version) {
-            throw new Error(`${chalk.magenta(this.date)} ${chalk.grey("|")} ${chalk.red("Version Error")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.blueBright("We are sorry, seems like the version you are using does not match to the npm's version")}`);
+            throw new Error(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Seems like your version may be outdated, we reccomend you update to our latest version as your current version may not be supported!. Update to the latest version: ${chalk.magenta(this.version)}`)}`);
+        };
+        if(!curVer) {
+            throw TypeError(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Sorry did you define a version your using? We have to check if your using an update version`)}`)
         }
     }
 
