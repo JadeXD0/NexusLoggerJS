@@ -33,17 +33,17 @@ class NexusLogger {
         };
 
         if(typeof(curVer) !== typeof(String())) {
-            throw TypeError(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Is the version you defined even a string? Please make it a string. Example: ${chalk.white(`\`NotNexus.checkVersion("1.5.5")\``)}`)}`).then((data) => {
-                fs.writeFile(`${this.date} NexusLogFile${this.logFileNum++}`, `test`, function(err) {
-                    if(err) throw err;
-                    console.log('test saved!');
-                });
-            });
+            throw TypeError(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Is the version you defined even a string? Please make it a string. Example: ${chalk.white(`\`NotNexus.checkVersion("1.5.5")\``)}`)}`)
         };
     }
 
     consoleLog(text) {
-        console.log(`${chalk.magenta(this.time)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`);
+        console.log(`${chalk.magenta(this.time)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`).then(() => {
+            fs.writeFile(`${this.date} NexusLogFile${this.logFileNum++}`, `test`, function(err) {
+                if(err) throw err;
+                console.log('test saved!');
+            });
+        })
     }
 
     infoLog(text) {
