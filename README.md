@@ -1,3 +1,10 @@
+<div align="center">
+    <br />
+    <p>
+        <img src="./NexusLoggerJS-Logo.png" alt="NexusLoggerJS" />
+    </p>
+</div>
+
 # What NexusLogger is all About
 
 NexusLogger is a Simple but Advanced Logging System! It features Custom Logging with your own Texts!
