@@ -38,8 +38,8 @@ class NexusLogger {
     }
 
     consoleLog(text) {
-        console.log(`${chalk.magenta(this.time)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`).then(() => {
-            fs.writeFile(`${this.date} NexusLogFile${this.logFileNum++}`, `test`, function(err) {
+        console.log(`${chalk.magenta(this.time)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`).then((data) => {
+            fs.writeFile(`${this.date} NexusLogFile${this.logFileNum++}`, `${data}`, function(err) {
                 if(err) throw err;
                 console.log('test saved!');
             });
