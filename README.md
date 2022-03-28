@@ -1,7 +1,7 @@
 <div align="center">
     <br />
     <p>
-        <img src="./NexusLoggerJS-Logo.png" alt="NexusLoggerJS" />
+        <img src="./NexusLoggerJS-Logo.png" hegiht="512" alt="NexusLoggerJS" />
     </p>
 </div>
 
