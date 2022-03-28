@@ -27,7 +27,7 @@ NexusLogger is a Simple but Advanced Logging System! It features Custom Logging 
 const { NexusLogger } = require("nexusloggerjs");
 const NotNexus = new NexusLogger("NexusLoggingTest");
 // Checks if version is compatible with your version
-NotNexus.checkVersion("1.6.3");
+NotNexus.checkVersion(`Your version string`);
 
 // If version is not compatible
 // It will send out an error and will not proceed to execute
