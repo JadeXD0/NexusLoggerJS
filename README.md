@@ -25,20 +25,26 @@ NexusLogger is a Simple but Advanced Logging System! It features Custom Logging 
 ```js
 
 const { NexusLogger } = require("nexusloggerjs");
-const Nexus = new NexusLogger("NexusLogManager") // Just put a name for your console and your ready to go
+const NotNexus = new NexusLogger("NexusLoggingTest");
+// Checks if version is compatible with your version
+NotNexus.checkVersion("1.6.3");
+
+// If version is not compatible
+// It will send out an error and will not proceed to execute
+// NotNexus.checkVersion("1.5.10");
 
 
-// Example Log
-Nexus.consoleLog("Console Logs");
+// Executes a Console Log
+NotNexus.consoleLog("Console Test Log")
 
-// Example Info Log
-Nexus.infoLog("An Info Log!");
+// Executes a Info Log
+NotNexus.infoLog("Info Test Log");
 
-//Example Warn Log
-Nexus.warnLog("A Warn Log!");
+// Executes a Warn Log
+NotNexus.warnLog("Warn Test Log");
 
-// Example Error Log
-Nexus.errorLog("F*ck.. Why did i have to error!?")
+// Executes an Error Log
+NotNexus.errorLog("Error Test Log");
 ```
 
 > If you are interested on suggesting we are working on something for suggestions on our discord server!
