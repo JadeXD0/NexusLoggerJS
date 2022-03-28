@@ -3,6 +3,7 @@
 const chalk = require("chalk");
 const moment = require("moment");
 const fs = require("fs");
+var util = require('util');
 
 const latest  = require("./package.json").version;
 
@@ -14,6 +15,7 @@ class NexusLogger {
         
         const d = new Date();
         const d2 = new Date();
+        curNum = 0;
 
         var formattedtimedate = moment(d).format("h:mm:ss a");
         var formattedDate = moment(d2).format("YYYY-MM-DD");
@@ -38,12 +40,14 @@ class NexusLogger {
     }
 
     consoleLog(text) {
-        console.log(`${chalk.magenta(this.time)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`).then((data) => {
-            fs.writeFile(`${this.date} NexusLogFile${this.logFileNum++}`, `${data}`, function(err) {
-                if(err) throw err;
-                console.log('test saved!');
-            });
-        })
+        const fileWrite = fs.createWriteStream(`${this.date} NexusLogFile${this.logFileNum++}.log`, { flags: 'a' })
+        var log_stdout = process.stdout;
+
+        console.log = function() {
+            fileWrite.write(util.format.apply(null, arguments) + '\n');
+        }
+        console.log(`${chalk.magenta(this.time)} ${chalk.grey("|")} ${chalk.grey("Log")} ${chalk.magenta("[")}${chalk.magentaBright(this.name)}${chalk.magenta("]")} ${chalk.grey(" | ")} ${chalk.whiteBright(text)}`) = console.log;
+
     }
 
     infoLog(text) {
