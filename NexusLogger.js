@@ -8,10 +8,11 @@ var util = require('util');
 const latest  = require("./package.json").version;
 
 class NexusLogger {
-    constructor(name) {
+    constructor(name, yourVersion) {
 
         this.name = name;
         this.version = latest;
+        this.yourVersion = yourVersion;
         
         const d = new Date();
         const d2 = new Date();
@@ -23,22 +24,22 @@ class NexusLogger {
         this.date = formattedDate
 
     };
-    checkVersion(curVer) {
-        if(curVer !== this.version) {
+    checkVersion() {
+        if(this.yourVersion !== this.version) {
             const fileWrite = fs.createWriteStream(`${this.date} NexusLogFile.log`, { flags: 'a' })
 
             fileWrite.write(util.format.apply(null, arguments) + '\n');
             throw new Error(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Seems like your version may be outdated, we reccomend you update to our latest version as your current version may not be supported!. Update to the latest version: ${chalk.magenta(this.version)}`)}`);
         };
 
-        if(!curVer) {
+        if(!this.yourVersion) {
             const fileWrite = fs.createWriteStream(`${this.date} NexusLogFile.log`, { flags: 'a' })
 
             fileWrite.write(util.format.apply(null, arguments) + '\n');
             throw TypeError(`${chalk.red("Version Error")} ${chalk.grey("|")} ${chalk.whiteBright(`Sorry did you define a version your using? We have to check if your using an update version`)}`)
         };
 
-        if(typeof(curVer) !== typeof(String())) {
+        if(typeof(this.yourVersion) !== typeof(String())) {
             const fileWrite = fs.createWriteStream(`${this.date} NexusLogFile.log`, { flags: 'a' })
 
             fileWrite.write(util.format.apply(null, arguments) + '\n');

@@ -13,8 +13,11 @@ NexusLogger is a Simple but Advanced Logging System! It features Custom Logging 
 
 - [x] Custom Logging
 - [x] Version Checking
-- [ ] File Logging
-- [ ] File Log Saving
+- [x] File Log Saving
+- [] User Options
+- [] Enable/Disable features
+- [x] User Friendly Logging System
+- [] NPM Package Docs
 
 ### How to use NexusLogger
 
@@ -48,4 +51,5 @@ NotNexus.errorLog("Error Test Log");
 ```
 
 > If you are interested on suggesting we are working on something for suggestions on our discord server!
+
 > Discord server not availale temporarily
