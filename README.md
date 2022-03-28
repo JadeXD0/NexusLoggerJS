@@ -14,10 +14,10 @@ NexusLogger is a Simple but Advanced Logging System! It features Custom Logging 
 - [x] Custom Logging
 - [x] Version Checking
 - [x] File Log Saving
-- [] User Options
-- [] Enable/Disable features
+- [ ] User Options
+- [ ] Enable/Disable features
 - [x] User Friendly Logging System
-- [] NPM Package Docs
+- [ ] NPM Package Docs
 
 ### How to use NexusLogger
 
